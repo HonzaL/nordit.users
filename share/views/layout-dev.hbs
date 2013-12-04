@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="<%= lang %>">
+<head>
+  <meta charset="utf-8"/>
+  <title>Nordit Business Intelligence Server Kompas</title>
+  <link rel="stylesheet" href="/css/nordit_screen.css" />
+  <link rel="stylesheet" href="/css/nordit_print.css" media="print" />
+</head>
+<body>
+
+<script type="text/x-handlebars">
+
+<div id="workspace">
+  <div id="header" class="font11 noprint">
+    <div id="blue-line">
+      <span id="header-nordit"><a href="http://www.nordit.cz">www.nordit.cz</a></span>
+      >> {{title}}
+    </div>
+  </div>
+  <div id="navigation" class="noprint">
+    <span id="header-nordit">- - -</span>
+    <span style="float:right; padding-right:7px; cursor: pointer;"><a href="#" {{action "changeLang" "ru"}}>ru</a></span>
+    <span style="float:right; padding-right:7px; cursor: pointer;"><a href="#" {{action "changeLang" 'en'}}>en</a></span>
+    <span style="float:right; padding-right:7px; cursor: pointer;"><a href="#" {{action "changeLang" 'cs'}}>cs</a></span>
+      <ul>
+      {{#each item in menu}}
+      {{#if item.isAnchor}}
+        <li><a href="#" {{action anchor item.url}}>{{item.title}}</a></li>
+      {{else}}
+        <li><a href="#" {{action submenu item.url}}>{{item.title}}</a></li>
+      {{/if}}
+      {{/each}}
+     </ul>
+    <div class="clear"></div>
+  </div>
+
+<!-- Konec header a navigation -->
+<!-- Zacatek leveho navigacniho soupce -->
+
+  <div id="left-pane" class="noprint">
+    {{outlet submenu}}
+  </div>
+
+<!-- Konec leveho navigacniho soupce -->
+
+<!-- Obsah -->
+
+  <div id="content">
+    {{outlet}}
+  </div>
+  <div class="clear"></div>
+
+</div>
+
+</script>
+
+  <script>var json_locale_data = {};</script>
+
+  <script src="/lib/jquery/jquery.js"></script>
+  <script src="/lib/handlebars/handlebars.js"></script>
+  <script src="/lib/ember/ember.js"></script>
+  <script src="/lib/ember-data/ember-data.js"></script>
+
+  <script src="/lib/i18n-abide/gettext.js"></script>
+  <script src="/lib/nordit/pktime.js"></script>
+
+  <script src="/scripts/application.js"></script>
+  <script src="/scripts/router.js"></script>
+  <script src="/scripts/controllers/controllers.js"></script>
+  <script src="/scripts/controllers/login.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,14 @@
+{
+    "name": "users",
+    "version": "0.1.0",
+    "appPath": "client",
+    "authors": [
+	"Jan Lisal <jan.lisal@nordit.cz>"
+    ],
+    "dependencies": {
+	"ember": "1.0.0"
+    },
+    "main": "server.js",
+    "licence": "MIT",
+    "private": true
+}

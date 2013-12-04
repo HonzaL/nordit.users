@@ -1,0 +1,573 @@
+body {
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	padding: 0px;
+	margin: 0px;
+}
+
+#header {
+	color: silver;
+	background-color: rgb(11,28,80);
+	padding-bottom: 2px;
+	border-bottom: 1px solid rgb(127,127,127);
+}
+
+#blue-line {
+	padding-left: 5px;
+	border-bottom: 1px solid rgb(23,60,168);
+}
+
+.font11 {
+	font-size: 11px;
+	font-weight: bold;
+}
+
+#header-nordit {
+	float: right;
+	padding-right: 5px;
+	font-weight: normal;
+	color: white;
+}
+
+#navigation {
+	color: white;
+	background-color: rgb(11,28,80);
+	font-size: 11px;
+	font-weight: bold;
+	padding-bottom: 4px;
+}
+
+#navigation ul {
+	margin: 0;
+	padding: 1px 0 0 0;
+}
+
+#navigation li {
+	margin-left: 12px;
+	padding: 0 3px;
+	display: inline;
+	border: 1px solid rgb(11,28,80);
+}
+
+#navigation li.selected {
+	border: solid 1px white;
+}
+
+#navigation li:hover {
+	background: rgb(38,101,217);
+}
+
+#navigation li a:hover {
+	color: white;
+}
+
+.clear {
+	clear: both;
+}
+
+#workspace {
+	height: 100%;
+}
+
+#left-pane {
+	background-color: rgb(251,240,219);
+	border: 1px solid rgb(199,137,25);
+	border-left: 0px solid rgb(0,0,0);
+	height: 90%;
+	height: calc(100% - 40px);
+	width: 130px;
+	float: left;
+	margin-top: 3px;
+}
+
+#left-pane ul {
+	margin: 0;
+	padding-left: 15px;
+}
+
+#left-pane ul li {
+	margin: 0;
+	padding: 0;
+}
+
+.menu-block {
+	padding: 10px 5px;
+	font-weight: bold;
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+}
+
+.menu-overview {
+	position: absolute;
+	padding: 10px 5px;
+	font-weight: bold;
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+	top: 40px;
+}
+
+.menu-operation {
+	position: absolute;
+	padding: 10px 5px;
+	font-weight: bold;
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+	top: 500px;
+}
+
+#left-pane a {
+	color: green;
+	text-decoration: none;
+}
+
+#left-pane a:visited {
+	color: green;
+}
+
+#left-pane a:hover {
+	color: white;
+	background-color: blue
+}
+
+#content {
+        overflow: auto;
+	padding: 10px;
+}
+
+#content a {
+  color: blue;
+}
+
+#content a:hover {
+  text-decoration: underline;
+}
+
+#report {
+position: relative;
+}
+#legend {
+padding-top: 10px;
+}
+.legend-group {
+border: 1px solid black;
+border-radius: 5px;
+padding: 5px;
+background-color: #fffacd;
+margin-top: 5px;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.title {
+	border-top: 1px solid rgb(192,192,192);
+	border-bottom: 1px solid rgb(192,192,192);
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+	color: black;
+	margin: 0pt 0pt 0pt 0pt;
+	padding: 0pt;
+	line-height: 11pt;
+}
+
+a {
+	color: white;
+	text-decoration: none;
+}
+
+a:visited {
+	color: white;
+}
+
+a:hover {
+	color: yellow;
+}
+
+td.warning, .bg-warning, .bg-flour {
+background-color:#fcf8e3;
+}
+td.error, .bg-error {
+background-color:#f2dede;
+}
+.bg-water {
+background-color:#5bc0de;
+}
+.bg-yeast {
+background-color:#ffe8b2;
+}
+.bg-dough {
+background-color:#ffd67f;
+}
+.bg-temperature {
+background-color:#7ff1ff;
+}
+.bg-table-group {
+background-color:#dddddd;
+}
+thead .nordit-head-row td {
+background-color:rgb(23,60,168);
+color:white;
+}
+.text-warning {
+color: #fcf8e3;
+background-color: black;
+}
+
+.main_pane a {
+	color: green;
+	text-decoration: none;
+}
+
+.main_pane a:visited {
+	color: blue;
+}
+
+.priprava-material {
+border-bottom: 1px solid black;
+}
+.daily-report-tag {
+display:inline-block;
+width:20px;
+float:right;
+text-align:center;
+border-left: 1px solid black;
+}
+
+
+/* --- hlavni kreslici plocha aplikace --- */
+.main_iframe {
+	position: absolute;
+	width: 1615px;
+	top: 40px;
+	height: 960px;
+	left: 105px;
+	border-top: 0px solid rgb(199,137,25);
+	border-bottom: 0px solid rgb(199,137,25);
+	border-right: 0px solid rgb(199,137,25);
+	border-left: 0px solid rgb(0,0,0);
+	margin: 0px;
+	padding: 0px;
+}
+
+/* --- frame pro leve navigacni sub-menu --- */
+.left_iframe {
+	position: absolute;
+	width: 100px;
+	height: 800px;
+	top: 40px;
+	left: 1px;
+	background-color: rgb(251,240,219);
+	border-top: 1px solid rgb(199,137,25);
+	border-bottom: 1px solid rgb(199,137,25);
+	border-right: 1px solid rgb(199,137,25);
+	border-left: 0px solid rgb(0,0,0);
+	margin: 0px;
+	padding: 0px;
+}
+
+.left_pane {
+	color: black;
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.left_pane a {
+	color: green;
+	text-decoration: none;
+}
+
+.left_pane a:visited {
+	color: green;
+}
+
+.left_pane a:hover {
+	color: white;
+	background-color: blue
+}
+
+.sel {
+
+	border: solid 1px gray;
+}
+.unsel {
+	border-style: none;
+}
+
+.main_pane {
+	color: black;
+	background-color: white;
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+}
+
+.main_pane table {
+	text-align: left;
+	border: 0px none silver;
+}
+
+.main_pane th {
+	color: black;
+	background-color: rgb(192,192,192);
+	font-family: MS Sans Serif, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.main_pane td {
+	text-align: left;
+	border-bottom: 1px solid silver;
+	border-right: 1px solid silver;
+}
+
+.header {
+        position: relative;
+        border-bottom: 1px black solid;
+        text-align: right;
+        margin-top: 10px;
+        margin-bottom: 10px;
+}
+
+.footer {
+        position: relative;
+        border-top: 1px black solid;
+        margin-top: 10px;
+	color: teal;
+	font-size: 11px;
+	text-align: left;
+}
+
+.right, .footer-right {
+	float: right;
+}
+.left, .footer-left {
+	float: left;
+}
+
+.footer-right, .footer-left {
+	color: teal;
+	font-size: 11px;	
+	text-align: left;
+}
+
+.report-header-row-title {
+    width: 70px;
+}
+.report-header-row-value, .report-header-row-title {
+    display: inline-block;
+}
+.report-header-long-row-title {
+    display: inline-block;
+    width: 110px;
+}
+#report-header {
+padding-bottom: 10px;
+}
+#content table, #content td {
+border: 1px black solid; 
+border-collapse: collapse;
+}
+#content td {
+width: 70px;
+}
+#content tfoot td, #content thead td {
+font-weight: bold;
+}
+
+.right-align {
+    text-align: right;
+}
+.center-align, thead td {
+text-align: center;
+}
+
+/* dosing_report*/
+.strip {     
+	width: 1020px;
+	height: 26px;
+	display: inline-block;
+	padding-top: 1px;
+	padding-left: 2px;
+	padding-bottom: 1px;
+	background-color: rgb(51,102,102);
+	}
+.stripTitle {
+	padding-top: 4px;
+	padding-left: 5px;
+	padding-bottom: 2px;
+	margin-bottom: 2px;
+	display: inline-block;
+	color: white;
+	font-size: 15px;
+	font-weight: 700;
+	font-style: normal;
+	}
+.title {
+	height: 20px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	color: black;
+	font-size: 16px;
+	font-weight: 700;
+	font-style: normal;
+	margin-left: 35px;
+	}
+.location {
+	height: 20px;
+	padding-right: 30px;
+	color: black;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: normal;
+	text-align: right;
+	}
+.since {
+	color: black;
+	font-size: 12px;
+	font-weight: bold;
+	font-style: normal;
+	float: left;    	    	
+	}
+.tdCell {
+	padding-right: 4px;
+	color: windowtext;
+	font-size: 13px;
+	font-weight: normal;
+	font-style: normal;
+	text-align: right;
+	white-space: nowrap;
+	border: 1px solid windowtext;
+	}
+.tdColHead {
+	font-weight: bold;
+	font-size: 12px;
+	text-align: center;
+	border: 1px solid windowtext;
+	}
+.tdDateTimeCell {
+	padding-right: 4px;
+	font-size: 14px;
+	text-align: right;
+	border: 1px solid windowtext;
+	}
+.tdFillSepar {
+	border: 1px solid windowtext;
+	background: silver;
+	}
+.tdSumCell {
+	padding-right: 4px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: right;
+	border: 1px solid windowtext;
+	}
+.tdColHead_up {	
+	font-weight:bold;
+        font-size: 12px;
+	text-align:center;
+        border-top:1px solid windowtext;
+	border-right:1px solid windowtext;
+	border-bottom:0px solid windowtext;
+	border-left:1px solid windowtext;}
+.tdColHead_dn {	
+	font-weight:bold;	
+        font-size: 12px;
+	text-align:center;
+        border-top:0px solid windowtext;
+	border-right:1px solid windowtext;
+	border-bottom:1px solid windowtext;
+	border-left:1px solid windowtext;}
+.tdDateTimeCell {
+	padding-right: 4px;
+	font-size: 14px;
+	text-align: right;
+	border: 1px solid windowtext;
+	}
+.tdDateTimeCell_up {
+	padding-right: 4px;
+	font-size: 14px;
+	text-align: right;	
+        border-top:1px solid windowtext;
+	border-right:1px solid windowtext;
+	border-bottom:0px solid windowtext;
+	border-left:1px solid windowtext;}
+	}
+.tdDateTimeCell_dn {
+	padding-right: 4px;
+	font-size: 14px;
+	text-align: right;
+	border-top:0px solid windowtext;
+	border-right:1px solid windowtext;
+	border-bottom:1px solid windowtext;
+	border-left:1px solid windowtext;}
+	}
+.tdSumCell {
+	padding-right: 4px;
+	font-size: 13px;
+	font-weight: bold;
+	text-align: right;
+	border: 1px solid windowtext;
+	}
+.footer {
+	color: teal;
+	font-size: 11px;
+	border: none;
+	text-align: left;
+	}    
+.right, .footer-right {
+ 	float: right;
+	}
+.left, .footer-left {
+	float: left;
+	}
+.footer-right, .footer-left {
+	color: teal;
+	font-size: 11px;
+	border: none;
+	text-align: left;
+ 	}
+.clear {
+	clear: both;
+	}
+
+#content table.type-2, #content .type-2 td {
+border-top: none;
+}
+#content table.type-2 tr:hover, #content table.type-3 tr:hover {
+background-color: #e8e8e8;
+}
+
+#content table.type-3 thead td {
+border: 0;
+padding: 3px;
+
+}
+#content table.type-3 {
+border: 0px;
+}
+#content table.type-3 tbody td {
+border: 0px;
+border-top: 1px solid;
+border-bottom: 1px solid;
+padding: 1px 0;
+}
+#content table.type-3 tfoot tr:first-child td {
+border: 0px;
+border-top: 3px double;
+}
+.weekend {
+background-color: #dddddd;
+}
+#table-counter thead tr td {
+width: 100px;
+}
+#report-footer {
+margin-top: 10px;
+border-top: 3px double;
+} 

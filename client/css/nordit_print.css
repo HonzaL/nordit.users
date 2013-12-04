@@ -1,0 +1,40 @@
+/* CSS Document */
+.noprint {
+display: none;
+}
+
+.inputLine {
+display: none;
+}
+
+.header {
+  position: absolute;
+  top: 0px;
+  border-bottom: 1px black solid;  
+  margin-bottom: 10px;
+  text-align: right;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  border-top: 1px black solid;
+  margin-top: 10px;
+}
+#report {
+position: static;
+width: 100%;
+}
+#legend {
+position: static;
+padding-top: 10px;
+}
+body {
+margin: 0px;
+padding: 0px;
+}
+#report-footer {
+position: fixed;
+bottom: 0;
+}

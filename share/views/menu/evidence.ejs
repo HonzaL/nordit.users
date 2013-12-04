@@ -1,0 +1,21 @@
+[
+    {"title": "<%= gettext('Výkazy') %>",
+     "items": [
+	 {"title": "<%= gettext('denní přehled') %>", "url": "/evidence/denniPrehled?day=15&month=9&year=2013&days=4"},
+	 {"title": "<%= gettext('suroviny do linky') %>", "url": "/evidence/materialDoLinky?from=2013-9-14%2012:0:0&to=2013-9-15%2012:0:0&line=^."},
+	 {"title": "<%= gettext('měsíční spotřeby') %>", "url": "/evidence/mesicniSpotreby?month=9&year=2013"},
+	 {"title": "<%= gettext('porovnání výroby') %>", "url": "/summary/?day=15&month=9&year=2013"}
+     ]},
+    {"title": "<%= gettext('Denní souhrn') %>",
+     "items": [
+	 {"title": "<%= gettext('DCCH') %>", "url": "/evidence/denniSouhrn?line=^1&day=15&month=9&year=2013"},
+	 {"title": "<%= gettext('DCBP2') %>", "url": "/evidence/denniSouhrn?line=^2&day=15&month=9&year=2013"},
+	 {"title": "<%= gettext('DCBP') %>", "url": "/evidence/denniSouhrn?line=^3&day=15&month=9&year=2013"},
+	 {"title": "<%= gettext('středisko 1 - JP') %>", "url": "/evidence/denniSouhrn?line=^4&day=15&month=9&year=2013"},
+	 {"title": "<%= gettext('všechny linky') %>", "url": "/evidence/denniSouhrn?line=^.&day=15&month=9&year=2013"}
+     ]},
+    {"title": "<%= gettext('Počítačky') %>",
+     "items": [
+         {"title": "<%= gettext('výkaz') %>", "url": "/counter/?month=9&year=2013"}
+     ]}
+]

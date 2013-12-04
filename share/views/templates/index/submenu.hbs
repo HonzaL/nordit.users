@@ -1,0 +1,13 @@
+
+{{#with application as app}}
+    <div class="menu-block">
+{{#each item in menu}}
+      <span class="block-header">{{item.title}}</span>
+      <ul>
+{{#each sub in item.items}}
+	<li><a href="#" {{action anchor2 sub.url app.contract}}">{{sub.title}}</a></li>
+{{/each}}
+      </ul>
+{{/each}}
+    </div>
+{{/with}}

@@ -1,0 +1,11 @@
+
+{{#with application as app}}
+<div id="contract-list">
+  <ul>
+    {{#each}}
+    <li>{{#link-to 'contract.index' app.lang _id}}{{title}}{{/link-to}} ({{_id}})</li>
+    {{/each}}
+  </ul>
+</div>
+{{/with}}
+
