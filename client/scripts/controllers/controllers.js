@@ -8,6 +8,14 @@ NU.ApplicationController = Ember.Controller.extend({
   , langObserver: function() {
       this.set('lang', NU.Application.lang);
   }.observes('NU.Application.lang')
+  , token: localStorage.token
+  , tokenObserver: function() {
+    localStorage.token = this.token;
+  }.observes('token')
+  , user: localStorage.user
+  , userObserver: function() {
+    localStorage.user = this.user;
+  }.observes('user')
   , contractObserver: function() {
     var _self = this;
     $.ajax({
@@ -33,10 +41,18 @@ NU.ApplicationController = Ember.Controller.extend({
   , init: function() {
     NU.Application.set('contract', 'main');
     this.contractObserver();
+    this.tokenObserver();
+    this.set('token', this.token != 'null' ? this.token : false);
   }
   , actions: {
     changeLang: function(toLang) {
       this.transitionToRoute(this.currentRouteName, toLang);
+    },
+    logout: function() {
+      delete localStorage;
+      this.set('token', null);
+      this.set('user', null);
+      this.transitionToRoute('about', this.lang);
     }
   }
 });
@@ -53,6 +69,8 @@ NU.ContractsIndexController = NU.ArrayBaseController.extend({});
 NU.ContractIndexController = NU.BaseController.extend({});
 NU.LangController = NU.BaseController.extend({});
 NU.AboutController = NU.BaseController.extend({});
+NU.LoginWidgetController = NU.BaseController.extend({});
+
 NU.SubmenuController = NU.BaseController.extend({
   menu: []
   , clearMenu: function() {

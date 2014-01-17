@@ -30,7 +30,6 @@ var async = require('async')
 function render(app) {
     return function(req, res)  {
         var template = app.settings.env == 'development' ? 'layout-dev' : 'layout';
-	console.log('main render');
 	res.render(template, {
 	    env: app.settings.env,
 	})
@@ -44,19 +43,39 @@ module.exports = function (app, config, passport) {
 
 //-    app.get(/^\/templates\/(.*)$/, templates.show)
 //    app.get(/^\/contract\/([^\/]+)\/templates\/(.*)$/, templates.showContract)
-    app.get(/^\/nc\/([^\/]+)(.*)$/, proxy.main)
-    app.get(/^\/menu(\/.*)$/, menu.get)
+    app.get(/^\/nc\/([^\/]+)(.*)$/, proxy.main);
+    app.get(/^\/menu(\/.*)$/, menu.get);
 
-    app.get('/*', render(app))
-//    app.get('/:lang/nc*', render(app))
+    app.get('/profile', passport.authenticate('bearer', {session: false}), function(req, res) {
+	res.send(200);
+    });
 
-//    app.get('/:lang/:contract/', render(app))
+    app.get('/*', render(app));
   
-  // user routes
-/*  app.get('/login', users.login)
-  app.get('/signup', users.signup)
-  app.get('/logout', users.logout)
-  app.post('/users', users.create)
+  // authorization routes
+  app.post('/api/v1/auth/login', passport.authenticate('local', {session: false}),  function(req, res) {
+      var user = req.user
+        , token = req.authInfo.cookieToken
+
+      if (user) {
+	  // Generate and save the token (forgotten upon server restart).
+	  res.send({
+	      success: true,
+	      token: new Buffer(user.username + "||" + token).toString('base64'),
+      	      username: user.username
+	  });
+      } else {
+	  res.send({
+	      success: false,
+	      message: 'Invalid username/password'
+	  });
+      }
+  });
+
+//  app.get('/signup', users.signup);
+//  app.post('/api/v1/users/logout', require(config.path.server + '/lib/auth/logout'));
+
+/*  app.post('/users', users.create)
   app.post('/users/session',
     passport.authenticate('local', {
       failureRedirect: '/login',

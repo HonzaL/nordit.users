@@ -1,0 +1,9 @@
+<div style="margin:0 auto;height:auto;">
+<form id="form-login" {{action login on="submit"}} style="background-color:ivory;width:250px;padding:20px;margin:0 auto;border:1px solid #b0b0b0;">
+  <div style="align:center;font-weight:bold;">Sign In</div>
+  {{input value=username type="text" placeholder="Username" class="nordit-input"}}
+  {{input value=password type="password" placeholder="Password" class="nordit-input"}}
+  {{input class="btn" type="submit" value="Sign In"}}
+  {{errorMessage}}
+</form>
+</div>

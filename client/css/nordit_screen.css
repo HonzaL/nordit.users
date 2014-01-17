@@ -70,6 +70,10 @@ body {
 	height: 100%;
 }
 
+#form-login .nordit-input {
+border: 1px solid #ffdead;
+}
+
 #left-pane {
 	background-color: rgb(251,240,219);
 	border: 1px solid rgb(199,137,25);

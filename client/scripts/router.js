@@ -2,8 +2,14 @@
 NU.Router.map(function() {
     this.resource('main', {path: '/'});
     this.resource('lang', {path: '/:lang_id'}, function() {
+	this.resource('admin', function() {
+		this.resource('user', function() {
+			this.route('new');		
+		});
+	});
 	this.resource('login');
 	this.resource('about');
+	this.resource('restricted');
 	this.resource('common');
 	this.resource('contracts',  function() {
 	    this.resource('contract', {path: "/:contract_id"}, function() {
@@ -17,12 +23,6 @@ NU.Router.reopen({location: 'history'});
 
 NU.BaseRoute = Ember.Route.extend({
   actions: {
-    error: function(reason, transition) {
-	// vyvola se pokud prijde Unauthenticated - pozadavek na login
-	if (reason.status === 401) {
-	    redirectToLogin(transition);
-	}
-    },
     anchor: function(url) {
       this.transitionTo(url, NU.Application.lang);
     },
@@ -45,16 +45,67 @@ NU.BaseRoute = Ember.Route.extend({
 	_self.render('submenu', {into: 'application', controller: 'submenu', outlet: 'submenu'});
       });
     }
-  },
-  redirectToLogin: function(transition) {
-      var loginController = this.controllerFor('login');
-      loginController.set('attemptedTransition', transition);
-      this.transitionTo('login');
   }
 //  , activate: function() {
 //    var controller = this.controllerFor('application');
 //    controller.set('lastFilter', this.templateName);
 //  }
+});
+
+NU.AuthenticatedRoute = NU.BaseRoute.extend({
+  beforeModel: function(transition) {
+    if (!this.controllerFor('application').get('token')) {
+      this.redirectToLogin(transition);
+    }
+  },
+
+  redirectToLogin: function(transition) {
+    alert('You must log in!');
+
+    var loginController = this.controllerFor('login');
+    loginController.set('attemptedTransition', transition);
+//TODO jazyk
+    this.transitionTo('login', NU.Application.lang);
+  },
+
+  getJSONWithToken: function(url) {
+    var _self = this;
+    var token = this.controllerFor('login').get('token');
+    return $.ajax({
+      url: url,
+      type: 'GET',
+      dataType: 'json',
+      beforeSend: function(xhr) {
+	xhr.setRequestHeader('authorization', "bearer " + _self.controllerFor('application').get('token'));
+      }
+    });
+//    return $.getJSON(url, { token: token });
+  },
+  setAuthorizationHeader: function(xhr) {
+    
+  },
+
+  actions: {
+    error: function(reason, transition) {
+      if (reason.status === 401) {
+        this.redirectToLogin(transition);
+      } else {
+        alert('Something went wrong');
+      }
+    }
+  }
+});
+
+NU.LoginRoute = Em.Route.extend({
+    setupController: function(controller, context) {
+	controller.reset();
+    }
+});
+
+NU.UserNewRoute = Em.Route.extend({
+	setupController: function(controller, context) {
+		controller.reset();
+	}
 });
 
 NU.ApplicationAdapter = DS.RESTAdapter.extend({
@@ -87,6 +138,15 @@ NU.ContractRoute = NU.BaseRoute.extend({
     model: function(params) {
 	NU.Application.set('contract', params.contract_id);
     }
+});
+
+NU.RestrictedRoute = NU.AuthenticatedRoute.extend({
+  setupController: function(controller, model) {
+    controller.set('model', model);
+    this.getJSONWithToken('/profile');
+
+  }
+
 });
 
 NU.ContractIndexRoute = NU.BaseRoute.extend({

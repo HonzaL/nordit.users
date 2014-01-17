@@ -37,9 +37,13 @@ NU.Application = Ember.Object.create({
 });
 
 NU.AboutView = Ember.View.extend({templateName: 'about'});
-NU.LoginView = Ember.View.extend({templateName: 'login'});
+NU.RestrictedView = Ember.View.extend({templateName: 'restricted'});
+NU.UserNewView = Ember.View.extend({templateName: 'user/new'});
+NU.LoginView = Ember.View.extend({templateName: 'authentication/login'});
 NU.CommonView = Ember.View.extend({templateName: 'common'});
 NU.NavigationView = Ember.View.extend({templateName: 'navigation'});
 NU.SubmenuView = Ember.View.extend({templateName: 'index/submenu'});
 NU.ContractsIndexView = Ember.View.extend({templateName: 'index/contracts'});
 NU.ContractIndexView = Ember.View.extend({templateName: 'contracts/detail'});
+
+NU.LoginWidgetView = Ember.View.extend({templateName: 'authentication/loginWidget'});

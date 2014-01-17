@@ -1,0 +1,5 @@
+{{#if token}}
+  | {{user}} <span {{action 'logout'}} style="cursor:pointer;">Logout</span>
+{{else}}
+  | {{#link-to 'login' lang}}Login{{/link-to}}
+{{/if}}

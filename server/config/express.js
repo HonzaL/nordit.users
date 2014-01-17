@@ -33,7 +33,7 @@ module.exports = function (app, config, passport) {
 	app.use(express.bodyParser())
 	app.use(express.methodOverride())
 
-	// use passport session
+	// use passport
 	app.use(passport.initialize())
 	
 	// routes should be at the last

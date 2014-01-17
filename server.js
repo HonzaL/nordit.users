@@ -10,18 +10,15 @@ var express = require('express')
   , passport = require('passport')
 
 // Load configurations
-// if test env, load example file
-var env = process.env.NODE_ENV || 'development'
-  , config = require('./server/config/config')[env]
-  , mongoose = require('mongoose')
-
-// Bootstrap db connection
+var mongoose = require('mongoose')
+  , config = require("nconfig")({file: process.cwd() + '/server/config/config'})
+ 
+// Bootstrap mongoDB connection
 mongoose.connect(config.db.mongo)
 
 // Bootstrap models
 var models_path = config.path.server + '/models'
 fs.readdirSync(models_path).forEach(function (file) {
-  console.log(models_path + '/' + file)
   if (~file.indexOf('.js')) require(models_path + '/' + file)
 })
 
@@ -37,7 +34,6 @@ var app = express()
 
 // Bootstrap i18n
 require(config.path.server + '/config/i18n')(app, config)
-
 require(config.path.server + '/config/express')(app, config, passport)
 require(config.path.server + '/config/api')(app, config)
 

@@ -1,38 +1,42 @@
 {
-  "name": "nordit.users",
-  "version": "0.1.0",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js"
-  },
-  "dependencies": {
-    "express": "3.0.x",
-    "express-resource": "1.0.x",
-    "async": "0.1.x",
-    "ejs": "0.8.x",
-    "pg": "2.1.0",
-    "passport": "0.1.17",
-    "passport-local": "0.1.6",
-    "mongoose": "3.6.17",
-    "mongoose-acl": "0.2.1",
-    "http-proxy": "~0.10.3",
-    "request": "~2.27.0",
-    "i18n-abide": "~0.0.14",
-    "underscore.string": "~2.3.0",
-    "pktime": "git://github.com/HonzaL/pktime.git#v1.0.0"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-uglify": "~0.2.2",
-    "grunt-contrib-concat": "~0.3.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/HonzaL/users.git"
-  },
-  "author": "Jan Lisal",
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.3.x"
-  }
+    "name": "nordit.users",
+    "version": "0.1.0",
+    "main": "server.js",
+    "scripts": {
+	"start": "node server.js"
+    },
+    "dependencies": {
+	"express": "3.0.x",
+	"express-resource": "1.0.x",
+	"async": "0.1.x",
+	"ejs": "0.8.x",
+	"pg": "2.1.0",
+	"passport": "0.1.17",
+	"passport-local": "0.1.6",
+	"passport-http-bearer": "1.0.1",  
+	"mongoose": "3.6.17",
+	"mongoose-acl": "0.2.1",
+	"mongoose-hash": "0.2.0",
+	"http-proxy": "~0.10.3",
+	"request": "~2.27.0",
+	"i18n-abide": "~0.0.14",
+	"underscore.string": "~2.3.0",
+	"password-filter": "0.1.0",
+	"pktime": "git://github.com/HonzaL/pktime.git#v1.0.0",
+	"nconfig": "git://github.com/HonzaL/nconfig.git"
+    },
+    "devDependencies": {
+	"grunt": "~0.4.1",
+	"grunt-contrib-uglify": "~0.2.2",
+	"grunt-contrib-concat": "~0.3.0"
+    },
+    "repository": {
+	"type": "git",
+	"url": "https://github.com/HonzaL/users.git"
+    },
+    "author": "Jan Lisal",
+    "engines": {
+	"node": "0.10.x",
+	"npm": "1.3.x"
+    }
 }
