@@ -14,22 +14,23 @@
   <div id="header" class="font11 noprint">
     <div id="blue-line">
       <span id="header-nordit"><a href="http://www.nordit.cz">www.nordit.cz</a></span>
-      >> {{header.title}} 
+      >> {{title}} 
     </div>
   </div>
   <div id="navigation" class="noprint">
-    <span id="header-nordit">- - -</span>
+    <span id="header-nordit"> {{view NU.LoginWidgetView}}</span>
     <span style="float:right; padding-right:7px; cursor: pointer;"><a href="#" {{action "changeLang" "ru"}}>ru</a></span>
     <span style="float:right; padding-right:7px; cursor: pointer;"><a href="#" {{action "changeLang" 'en'}}>en</a></span>
     <span style="float:right; padding-right:7px; cursor: pointer;"><a href="#" {{action "changeLang" 'cs'}}>cs</a></span>
     <ul>
-      <li>
-	{{#link-to 'common'}}common{{/link-to}}
-      </li>
-      <li>
-	{{#link-to 'about'}}about{{/link-to}}
-      </li>
-    </ul>
+      {{#each item in menu}}
+      {{#if item.isAnchor}}
+        <li><a href="#" {{action anchor item.url}}>{{item.title}}</a></li>
+      {{else}}
+        <li><a href="#" {{action submenu item.url}}>{{item.title}}</a></li>
+      {{/if}}
+      {{/each}}
+     </ul>
     <div class="clear"></div>
   </div>
 
@@ -37,12 +38,7 @@
 <!-- Zacatek leveho navigacniho soupce -->
 
   <div id="left-pane" class="noprint">
-    <div class="menu-block" ng-repeat="item in menu">
-      <span class="block-header">{{item.title}}</span>
-      <ul>
-	<li ng-repeat="sub in item.items"><a ng-href="/{{lang}}{{sub.url}}">{{sub.title}}</a></li>
-      </ul>
-    </div>
+    {{outlet submenu}}
   </div>
 
 <!-- Konec leveho navigacniho soupce -->
