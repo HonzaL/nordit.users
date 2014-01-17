@@ -2,3 +2,6 @@ server/config/config.js
 node_modules
 *~
 *.log
+client/scripts/nordit.users.js
+client/scripts/nordit.users.min.js
+
