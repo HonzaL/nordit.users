@@ -16,7 +16,7 @@ var mongoose = require('mongoose')
 
 exports.index = function(req, res) {
     var Contract = mongoose.model('Contract')
-    Contract.find({}, {'_id': 1, 'title': 1, 'active': 1}, function(err, data) {
+    Contract.find({'active': true}, {'_id': 1, 'title': 1, 'active': 1}, function(err, data) {
 	if (err) res.send(404)
 	for (var contract in data) {
 	    data[contract].id = data[contract]._id;

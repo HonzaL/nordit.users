@@ -22,8 +22,10 @@
 	"i18n-abide": "~0.0.14",
 	"underscore.string": "~2.3.0",
 	"password-filter": "0.1.0",
+	"qs": "0.6.6", 
 	"pktime": "git://github.com/HonzaL/pktime.git#v1.0.0",
-	"nconfig": "git://github.com/HonzaL/nconfig.git"
+	"nconfig": "git://github.com/HonzaL/nconfig.git",
+	"ncontract": "git://github.com/HonzaL/ncontract.git"
     },
     "devDependencies": {
 	"grunt": "~0.4.1",

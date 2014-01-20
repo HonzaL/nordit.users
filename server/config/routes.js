@@ -43,7 +43,7 @@ module.exports = function (app, config, passport) {
 
 //-    app.get(/^\/templates\/(.*)$/, templates.show)
 //    app.get(/^\/contract\/([^\/]+)\/templates\/(.*)$/, templates.showContract)
-    app.get(/^\/nc\/([^\/]+)(.*)$/, proxy.main);
+    app.all(/^\/nc\/([^\/]+)(.*)$/, proxy.main);
     app.get(/^\/menu(\/.*)$/, menu.get);
 
     app.get('/profile', passport.authenticate('bearer', {session: false}), function(req, res) {

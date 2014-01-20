@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env /usr/bin/node
 // nbims - Nordit Business Intelligence Demo Server - Kompas
 
 /**
@@ -21,6 +21,8 @@ var models_path = config.path.server + '/models'
 fs.readdirSync(models_path).forEach(function (file) {
   if (~file.indexOf('.js')) require(models_path + '/' + file)
 })
+// Contract model bootstrap
+var ncontract = require('ncontract')
 
 // Setup contract
 var setup = require(config.path.server + '/config/setup')(config)
