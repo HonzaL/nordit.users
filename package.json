@@ -12,10 +12,7 @@
 	"ejs": "0.8.x",
 	"pg": "2.1.0",
 	"passport": "0.1.17",
-	"passport-local": "0.1.6",
-	"passport-http-bearer": "1.0.1",  
 	"mongoose": "3.6.17",
-	"mongoose-acl": "0.2.1",
 	"mongoose-hash": "0.2.0",
 	"http-proxy": "~0.10.3",
 	"request": "~2.27.0",
@@ -25,7 +22,8 @@
 	"qs": "0.6.6", 
 	"pktime": "git://github.com/HonzaL/pktime.git#v1.0.0",
 	"nconfig": "git://github.com/HonzaL/nconfig.git",
-	"ncontract": "git://github.com/HonzaL/ncontract.git"
+	"ncontract": "git://github.com/HonzaL/ncontract.git",
+	"nauth": "git://github.com/HonzaL/nauth.git"
     },
     "devDependencies": {
 	"grunt": "~0.4.1",
