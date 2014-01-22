@@ -15,11 +15,15 @@ var mongoose = require('mongoose')
  */
 
 exports.index = function(req, res) {
+    if (!req.user) {
+	res.json({contract: []});
+	return;
+    }
     var Contract = mongoose.model('Contract')
-    Contract.find({'active': true}, {'_id': 1, 'title': 1, 'active': 1}, function(err, data) {
+    Contract.find({'active': true, _id: {$in: req.user.roles}}, {'_id': 1, 'title': 1, 'active': 1}, function(err, data) {
 	if (err) res.send(404)
 	for (var contract in data) {
-	    data[contract].id = data[contract]._id;
+		data[contract].id = data[contract]._id;
 	}
 	res.type('json').send({contract: data})
     })

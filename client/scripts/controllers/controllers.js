@@ -16,7 +16,9 @@ NU.ApplicationController = Ember.Controller.extend({
   , userObserver: function() {
     localStorage.user = this.user;
   }.observes('user')
+  , contract: NU.Application.contract
   , contractObserver: function() {
+    this.set('contract', NU.Application.contract);
     var _self = this;
     $.ajax({
       url: '/en/api/v1/contracts/' + NU.Application.contract,
@@ -39,10 +41,21 @@ NU.ApplicationController = Ember.Controller.extend({
   }.observes('NU.Application.contract')
   , title: null
   , init: function() {
-    NU.Application.set('contract', 'main');
-    this.contractObserver();
-    this.tokenObserver();
-    this.set('token', this.token != 'null' ? this.token : false);
+      NU.Application.set('contract', 'main');
+      this.contractObserver();
+      this.tokenObserver();
+      this.set('token', this.token != 'null' ? this.token : false);
+
+      // Pro kazdy dotaz na rest je potreba prikladat token do hlavicky authorization. 
+      var _self = this;
+      Ember.$.ajaxSetup({
+	  beforeSend: function(xhr) {
+	      var token = _self.token;
+	      if (!(token == 'null' || token == undefined))
+		  xhr.setRequestHeader('authorization', "Bearer " + token);
+	  }
+      });
+
   }
   , actions: {
     changeLang: function(toLang) {

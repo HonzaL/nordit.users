@@ -35,6 +35,16 @@ module.exports = function (app, config, passport) {
 
 	// use passport
 	app.use(passport.initialize())
+
+	// auth for contracts
+	app.use('/api/v1/contracts', function(req, res, next) {
+	    if (req.path.indexOf('main') != -1) {
+		next();
+	    }
+	    else {
+		passport.authenticate('bearer', {session: false})(req, res, next);
+	    }
+	})
 	
 	// routes should be at the last
 	app.use(app.router)

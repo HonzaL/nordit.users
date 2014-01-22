@@ -6,7 +6,9 @@
 var express = require('express')
   , resource = require('express-resource')
 
-module.exports = function (app, config) { 
+
+
+module.exports = function (app, config, passport) {
 
     var base = '/api/v1/'
 

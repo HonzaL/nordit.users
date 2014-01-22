@@ -37,7 +37,7 @@ var app = express()
 // Bootstrap i18n
 require(config.path.server + '/config/i18n')(app, config)
 require(config.path.server + '/config/express')(app, config, passport)
-require(config.path.server + '/config/api')(app, config)
+require(config.path.server + '/config/api')(app, config, passport)
 
 // Bootstrap routes
 require(config.path.server + '/config/routes')(app, config, passport)
