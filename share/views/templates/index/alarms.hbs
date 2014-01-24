@@ -1,0 +1,33 @@
+
+<div class="filter">
+  <input type="button" value="|<" {{action 'reloadAlarms' 0}} />
+  <input type="button" value="<" {{action 'reloadAlarms' -1}} />
+  <input type="button" value=">" {{action 'reloadAlarms' 1}} />
+</div>
+
+<h2>Seznam alarmů</h2>
+
+<table class="type-2">
+  <thead>
+    <tr class="nordit-head-row">
+      <td style="width: 30px;">Id</td>
+      <td style="width: 350px;">Alarm</td>
+      <td style="width:150px;">Čas vzniku</td>
+      <td style="width:150px;">Čas potvrzení</td>
+    </tr>
+  </thead>
+  <tbody>
+{{#each alarms.data}}
+  <tr>
+    <td class="bg-table-group" style="width: 30px;text-align:center;">{{alarm_id}}</td>
+    <td style="padding-left:5px;">{{alarm_text}}</td>
+    <td>{{origin_pktime}}</td>
+    <td>{{expiry_pktime}}</td>
+  </tr>
+{{/each}}
+  </tbody>
+</table>
+
+<div>
+  Zobrazeny alarmy {{startAlarm}} - {{endAlarm}} z celkových {{alarms.total}}
+</div>

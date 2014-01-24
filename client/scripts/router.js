@@ -17,7 +17,6 @@ NU.Router.map(function() {
 	    });
 	});
     });
-//    this.route('fhaf', {path: '/*'});
 })
 NU.Router.reopen({location: 'history'});
 
@@ -46,10 +45,6 @@ NU.BaseRoute = Ember.Route.extend({
       });
     }
   }
-//  , activate: function() {
-//    var controller = this.controllerFor('application');
-//    controller.set('lastFilter', this.templateName);
-//  }
 });
 
 NU.AuthenticatedRoute = NU.BaseRoute.extend({
@@ -64,27 +59,8 @@ NU.AuthenticatedRoute = NU.BaseRoute.extend({
 
     var loginController = this.controllerFor('login');
     loginController.set('attemptedTransition', transition);
-//TODO jazyk
     this.transitionTo('login', NU.Application.lang);
   },
-
-  getJSONWithToken: function(url) {
-    var _self = this;
-    var token = this.controllerFor('login').get('token');
-    return $.ajax({
-      url: url,
-      type: 'GET',
-      dataType: 'json',
-      beforeSend: function(xhr) {
-	xhr.setRequestHeader('authorization', "bearer " + _self.controllerFor('application').get('token'));
-      }
-    });
-//    return $.getJSON(url, { token: token });
-  },
-  setAuthorizationHeader: function(xhr) {
-    
-  },
-
   actions: {
     error: function(reason, transition) {
       if (reason.status === 401) {
@@ -103,9 +79,9 @@ NU.LoginRoute = Em.Route.extend({
 });
 
 NU.UserNewRoute = Em.Route.extend({
-	setupController: function(controller, context) {
-		controller.reset();
-	}
+    setupController: function(controller, context) {
+	controller.reset();
+    }
 });
 
 NU.ApplicationAdapter = DS.RESTAdapter.extend({
@@ -170,27 +146,7 @@ NU.ContractIndexRoute = NU.BaseRoute.extend({
   , serialize: function(model) {
       return {contract_id: NU.Application.contract};
   }
-/*  , init: function() {
-    this._super();
-    console.log('ContractDetail Route - init');
-
-    // nacist vse kolem zakazky a redirect na main stranku zakazky
-    var _self = this;
-    var contract_id = 'desin';//this.controllerFor('application').contract;
-    $.ajax({
-      url: '/en/nc/' + contract_id + '/scripts/' + contract_id + '.js',
-      async: false
-    }).success(function(data) {
-	eval(data);
-    });
-  }
-*/
 })
 
 NU.CommonRoute = NU.BaseRoute.extend();
-
-
-
-
-
 

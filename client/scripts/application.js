@@ -46,4 +46,6 @@ NU.SubmenuView = Ember.View.extend({templateName: 'index/submenu'});
 NU.ContractsIndexView = Ember.View.extend({templateName: 'index/contracts'});
 NU.ContractIndexView = Ember.View.extend({templateName: 'contracts/detail'});
 
+NU.AlarmsView = Ember.View.extend({templateName: 'index/alarms'});
+
 NU.LoginWidgetView = Ember.View.extend({templateName: 'authentication/loginWidget'});

@@ -33,7 +33,6 @@ NU.ApplicationController = Ember.Controller.extend({
       }
       if (NU.Application.contract != 'main') {
       	_self.menu.pushObject({'title': 'Seznam zakázek', 'url': 'contracts', 'isAnchor': true})
-     	_self.menu.pushObject({'title': 'O firme', 'isAnchor': true, 'url': 'about'})
       }
       _self.set('title', data.title);
 
