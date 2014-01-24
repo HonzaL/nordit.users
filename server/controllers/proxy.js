@@ -19,7 +19,7 @@ exports.main = function(req, res) {
     Contract.findOne({_id: contract}, function(err, data) {
 	if (err) res.send(404)
 	var options = {
-	    url: 'http://localhost:' + data.port + "/" + req.lang + path,
+	    url: 'http://localhost:' + data.port + "/" + req.lang + path + "?" + qs.stringify(req.query),
 	    method: req.method
 	}
 	if ((req.method == 'POST' || req.method == 'PUT') && req.body) {
