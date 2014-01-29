@@ -19,7 +19,7 @@ module.exports = function(grunt) {
 		separator: ';',
 	    },
 	    client: {
-		src: ['client/scripts/application.js', 'client/scripts/router.js', 'client/scripts/*/**/*.js'],
+		src: ['client/scripts/application.js', 'client/scripts/router.js', 'client/scripts/controllers.js', 'client/scripts/*/**/*.js'],
 		dest: 'client/scripts/<%= pkg.name %>.js'
 	    }
 	}
