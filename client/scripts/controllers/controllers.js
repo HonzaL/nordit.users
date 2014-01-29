@@ -1,5 +1,6 @@
 
 NU.ApplicationController = Ember.Controller.extend({
+  paramsFor: [],
   menu: []
   , clearMenu: function() {
     for(var i = this.menu.length-1; i >= 0; i--) this.menu.popObject(i);
@@ -18,25 +19,25 @@ NU.ApplicationController = Ember.Controller.extend({
   }.observes('user')
   , contract: NU.Application.contract
   , contractObserver: function() {
-    this.set('contract', NU.Application.contract);
-    var _self = this;
-    $.ajax({
-      url: '/en/api/v1/contracts/' + NU.Application.contract,
-      async: false
-    }).success(function(data) {
-      _self.clearMenu();
-      for (var i = 0; i < data.menu.length; i++) {
-	  data.menu[i].isAnchor = (data.menu[i].type == 'anchor');
-	  if (data.menu[i].type.match(/[sS]ub[mM]enu/))
-	      data.menu[i].url = data.menu[i].type.match(/contract/) ? "/nc/" + NU.Application.contract + "/menu/" + data.menu[i].url : "/menu/" + data.menu[i].url;
-	  _self.menu.pushObject(data.menu[i]);
-      }
-      if (NU.Application.contract != 'main') {
-      	_self.menu.pushObject({'title': 'Seznam zakázek', 'url': 'contracts', 'isAnchor': true})
-      }
-      _self.set('title', data.title);
-
-    });
+      this.set('contract', NU.Application.contract);
+      var _self = this;
+      //TODO lang
+      $.ajax({
+	  url: '/en/api/v1/contracts/' + NU.Application.contract,
+	  async: false
+      }).success(function(data) {
+	  _self.clearMenu();
+	  for (var i = 0; i < data.menu.length; i++) {
+	      data.menu[i].isAnchor = (data.menu[i].type == 'anchor');
+	      if (data.menu[i].type.match(/[sS]ub[mM]enu/))
+		  data.menu[i].url = data.menu[i].type.match(/contract/) ? "/nc/" + NU.Application.contract + "/menu/" + data.menu[i].url : "/menu/" + data.menu[i].url;
+	      _self.menu.pushObject(data.menu[i]);
+	  }
+	  if (NU.Application.contract != 'main') {
+      	      _self.menu.pushObject({'title': 'Seznam zakázek', 'url': 'contracts', 'isAnchor': true})
+	  }
+	  _self.set('title', data.title);
+      });
   }.observes('NU.Application.contract')
   , title: null
   , init: function() {
@@ -61,10 +62,13 @@ NU.ApplicationController = Ember.Controller.extend({
       this.transitionToRoute(this.currentRouteName, toLang);
     },
     logout: function() {
-      delete localStorage;
-      this.set('token', null);
-      this.set('user', null);
-      this.transitionToRoute('about', this.lang);
+	delete localStorage;
+	this.set('token', null);
+	this.set('user', null);
+	// Po odhlaseni se vracim zpet na hlavni stranku
+	NU.Application.set('contract', 'main');
+	this.contractObserver();
+	this.transitionToRoute('login', this.lang);
     }
   }
 });

@@ -9,11 +9,14 @@ window.NU = Ember.Application.create({
 Ember.View.reopen({
     templateForName: function(name, type) {
         if (!name) { return; }
-        var templates = Ember.get(this, 'templates'),
+        var templates = Ember.get(this, 'templates')
+	  , template = null;
+	try {
             template = Ember.get(templates, name);
+	} catch(err) {}
 	var urlPrefix = name.indexOf('||') == -1 ? '' : '/' + NU.Application.lang + '/nc/' + NU.Application.contract; 
         urlName = name.replace(/^[^\|]*\|\|/, "");
-	var url = urlPrefix + '/views/templates/%@.hbs'.fmt(urlName);
+	var url = urlName.match(/^\//) ? urlName : urlPrefix + '/views/templates/%@.hbs'.fmt(urlName);
         if (!template) {
             $.ajax({
                 url: url,

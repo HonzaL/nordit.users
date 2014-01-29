@@ -58,27 +58,17 @@
 
   <script src="/lib/jquery/jquery.min.js"></script>
   <script src="/lib/handlebars/handlebars.js"></script>
-  <script src="/lib/ember/ember.js"></script>
+  <script>
+    ENV = {FEATURES: {'query-params-new': true}};
+  </script>
+  <script src="http://builds.emberjs.com/canary/ember.js"></script>
+<!--  <script src="/lib/ember/ember.js"></script> -->
   <script src="/lib/ember-data/ember-data.js"></script>
 
   <script src="/lib/i18n-abide/gettext.js"></script>
   <script src="/lib/nordit/pktime.js"></script>
 
   <script src="/scripts/nordit.users.js"></script>
-
-<!--  <script src="/scripts/main.js"></script>
-  <script src="/scripts/controllers/MainCtrl.js"></script>
-  <script src="/scripts/controllers/MenuCtrl.js"></script>
-  <script src="/scripts/controllers/ContractCtrl.js"></script>
-  <script src="/scripts/controllers/EvidenceCtrl.js"></script>
-  <script src="/scripts/controllers/BatchCtrl.js"></script>
-  <script src="/scripts/controllers/SummaryCtrl.js"></script>
-  <script src="/scripts/controllers/CounterCtrl.js"></script>
-  <script src="/scripts/services/api.js"></script>
-  <script src="/scripts/directives/NgEnterDrct.js"></script>
-  <script src="/scripts/directives/NtReportFooterDrct.js"></script>
--->
-
 
 </body>
 </html>

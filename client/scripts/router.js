@@ -89,7 +89,7 @@ NU.ApplicationAdapter = DS.RESTAdapter.extend({
 })
 
 // Redirect do about pokud pristupuji do root aplikace
-NU.MainRoute = NU.BaseRoute.extend({beforeModel: function() { this.transitionTo('about', 'en'); }});
+NU.MainRoute = NU.BaseRoute.extend({beforeModel: function() { this.transitionTo('login', 'cs'); }});
 // Nastaveni jazyka pri pruchodu Lang routou
 NU.LangRoute = NU.BaseRoute.extend({
   model: function(params) {

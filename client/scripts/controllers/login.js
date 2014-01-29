@@ -29,8 +29,8 @@ NU.LoginController = NU.BaseController.extend({
 	          	attemptedTransition.retry();
           		_self.set('attemptedTransition', null);
        		    } else {
-          		// Redirect to 'about' by default.
-          		_self.transitionToRoute('about', NU.Application.lang);
+          		// Redirect to 'contracts' by default.
+          		_self.transitionToRoute('contracts', NU.Application.lang);
         	    }
 		}
 	    }).fail(function(res) { 

@@ -10,7 +10,6 @@ var async = require('async')
 
 //var alarms = require('../app/controllers/alarms')
 //-var templates = require('../app/controllers/templates')
-//  , proxy = require('../app/controllers/proxy')
 //  , counter = require('../app/controllers/counter')
 //  , summary = require('../app/controllers/summary')
 //var users = require('../app/controllers/users')
@@ -39,11 +38,9 @@ function render(app) {
 module.exports = function (app, config, passport) {
 
   var menu = require(config.path.server + '/controllers/menu')
-    , proxy = require(config.path.server + '/controllers/proxy')
 
 //-    app.get(/^\/templates\/(.*)$/, templates.show)
 //    app.get(/^\/contract\/([^\/]+)\/templates\/(.*)$/, templates.showContract)
-    app.all(/^\/nc\/([^\/]+)(.*)$/, proxy.main);
     app.get(/^\/menu(\/.*)$/, menu.get);
 
     app.get('/profile', passport.authenticate('bearer', {session: false}), function(req, res) {
