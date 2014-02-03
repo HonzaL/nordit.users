@@ -66,6 +66,7 @@ NU.ContractIndexView = Ember.View.extend({templateName: 'contracts/detail'});
 
 // Spolecne pohledy
 NU.AlarmsView = Ember.View.extend({templateName: 'index/alarms'});
-NU.DataDrivenTableView = Ember.View.extend({templateName: 'index/dataDrivenTable'})
+NU.DataDrivenTableView = Ember.View.extend({templateName: 'index/dataDrivenTable'});
+NU.SchemaView = Ember.View.extend({templateName: 'index/schema'});
 
 NU.LoginWidgetView = Ember.View.extend({templateName: 'authentication/loginWidget'});
