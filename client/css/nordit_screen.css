@@ -383,7 +383,7 @@ border-collapse: collapse;
 #content td {
 width: 70px;
 }
-#content tfoot td, #content thead td {
+#content tfoot td, #content thead td, .bold {
 font-weight: bold;
 }
 

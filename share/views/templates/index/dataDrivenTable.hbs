@@ -22,16 +22,6 @@
     {{/each}}
     </tr>
   </thead>
-  <tfoot>
-    <tr class="bg-table-group">
-{{#each foot in report.footer}}
-{{#each head in ../report.header}}
-      <td style="text-align:right;">{{roundValByKey foot head._id 2}}</td>
-{{/each}}
-    </tr>
-    <tr>
-{{/each}}
-  </tfoot>
 
   <tbody>
 {{#each row in report.body}}
@@ -42,6 +32,15 @@
     </tr>
 {{/each}}
   </tbody>
+
+{{#each foot in report.footer}}
+    <tr class="bg-table-group bold">
+{{#each head in ../report.header}}
+      <td style="text-align:right;">{{roundValByKey foot head._id 2}}</td>
+{{/each}}
+    </tr>
+{{/each}}
+
 
 </table>
 
