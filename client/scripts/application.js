@@ -5,6 +5,21 @@ window.NU = Ember.Application.create({
   , LOG_VIEW_LOOKUPS: true
 });
 
+Ember.Handlebars.helper('inc', function(value, options) {
+    return value + 1;
+});
+Ember.Handlebars.helper('valByKey', function(object, key) {
+    return object[key];
+})
+Ember.Handlebars.helper('round', function(value, ndn) {
+    return parseFloat(value).toFixed(ndn);
+})
+Ember.Handlebars.helper('roundValByKey', function(object, key, ndn) {
+    if (typeof object[key] === 'string') return object[key];
+    var value = parseFloat(object[key]);
+    return value ? value.toFixed(ndn) : object[key];
+})
+
 // Taken from http://stackoverflow.com/questions/10274391/is-it-possible-to-load-handlebar-template-with-script-tag-or-define-handlebar-t/13474886#13474886
 Ember.View.reopen({
     templateForName: function(name, type) {
@@ -49,6 +64,8 @@ NU.SubmenuView = Ember.View.extend({templateName: 'index/submenu'});
 NU.ContractsIndexView = Ember.View.extend({templateName: 'index/contracts'});
 NU.ContractIndexView = Ember.View.extend({templateName: 'contracts/detail'});
 
+// Spolecne pohledy
 NU.AlarmsView = Ember.View.extend({templateName: 'index/alarms'});
+NU.DataDrivenTableView = Ember.View.extend({templateName: 'index/dataDrivenTable'})
 
 NU.LoginWidgetView = Ember.View.extend({templateName: 'authentication/loginWidget'});

@@ -1,0 +1,47 @@
+
+<div id="dataDrivenTableFilter" class="filter noprint">
+  {{view view.filterView}}
+</div>
+
+<h2>{{report.title}}</h2>
+
+<div id="report-header">
+{{#each report.reportHeader}}
+  <div class="report-header-row">
+    <div class="report-header-row-title">{{title}}</div>
+    <div class="report-header-row-value">{{value}}</div>
+  </div>
+{{/each}}
+</div>
+
+<table class="type-3">
+  <thead>
+    <tr class="nordit-head-row">
+    {{#each report.header}}
+      <td>{{title}}</td>
+    {{/each}}
+    </tr>
+  </thead>
+  <tfoot>
+    <tr class="bg-table-group">
+{{#each foot in report.footer}}
+{{#each head in ../report.header}}
+      <td style="text-align:right;">{{roundValByKey foot head._id 2}}</td>
+{{/each}}
+    </tr>
+    <tr>
+{{/each}}
+  </tfoot>
+
+  <tbody>
+{{#each row in report.body}}
+    <tr>
+{{#each head in ../report.header}}
+      <td style="text-align:right;">{{roundValByKey row head._id 2}}</td>
+{{/each}}
+    </tr>
+{{/each}}
+  </tbody>
+
+</table>
+
